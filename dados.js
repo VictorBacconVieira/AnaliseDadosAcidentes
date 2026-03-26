@@ -1,16 +1,13 @@
 const fs = require("fs");
 
-// Lê o arquivo CSV
 const texto = fs.readFileSync("e.csv", "utf-8");
 
-// Quebra em linhas
-const linhas = texto.split("\n");
+const linhas = texto.trim().split(/\r?\n/);
 
 let x = [];
 let y = [];
 
 
-// Ignora o cabeçalho (linha 0)
 for (let i = 1; i < linhas.length; i++) {
     let valores = linhas[i].split(",");
 
@@ -20,7 +17,6 @@ for (let i = 1; i < linhas.length; i++) {
     }
 }
 
-// Função de regressão
 function calcularRegressao(x, y) {
     let n = x.length;
 
@@ -52,5 +48,4 @@ function calcularRegressao(x, y) {
     console.log("R² = " + r2.toFixed(4));
 }
 
-// Chamada
 calcularRegressao(x, y);
