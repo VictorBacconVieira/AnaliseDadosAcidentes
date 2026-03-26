@@ -33,7 +33,6 @@ function calcularRegressao(x, y) {
     let b = (n * somaXY - somaX * somaY) / (n * somaX2 - somaX * somaX);
     let a = (somaY - b * somaX) / n;
 
-    // Cálculo do R²
     let mediaY = somaY / n;
     let ssTotal = 0;
     let ssRes = 0;
