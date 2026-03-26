@@ -20,18 +20,20 @@ for (let i = 1; i < linhas.length; i++) {
 function calcularRegressao(x, y) {
     let n = x.length;
 
-    let somaX = 0, somaY = 0, somaXY = 0, somaX2 = 0;
+    let somaX = 0, somaY = 0, somaXY = 0, somaX2 = 0, somaY2 = 0; 
 
     for (let i = 0; i < n; i++) {
         somaX += x[i];
         somaY += y[i];
         somaXY += x[i] * y[i];
         somaX2 += x[i] * x[i];
+        somaY2 += y[i] * y[i];
     }
 
     let b = (n * somaXY - somaX * somaY) / (n * somaX2 - somaX * somaX);
     let a = (somaY - b * somaX) / n;
 
+    // Cálculo do R²
     let mediaY = somaY / n;
     let ssTotal = 0;
     let ssRes = 0;
@@ -44,8 +46,14 @@ function calcularRegressao(x, y) {
 
     let r2 = 1 - (ssRes / ssTotal);
 
+    let numeradorPearson = (n * somaXY) - (somaX * somaY);
+    let denominadorPearson = Math.sqrt((n * somaX2 - Math.pow(somaX, 2)) * (n * somaY2 - Math.pow(somaY, 2)));
+    let pearson = numeradorPearson / denominadorPearson;
+
     console.log("Equação: y = " + a.toFixed(2) + " + " + b.toFixed(2) + "x");
     console.log("R² = " + r2.toFixed(4));
+    console.log("Pearson (r) = " + pearson.toFixed(4));
 }
+
 
 calcularRegressao(x, y);
