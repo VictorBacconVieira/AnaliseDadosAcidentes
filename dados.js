@@ -56,3 +56,5 @@ function calcularRegressao(x, y) {
 
 
 calcularRegressao(x, y);
+
+//node dados.js   <--- código que roda no terminal(substituindo o dados.js pelo nome do arquivo)
